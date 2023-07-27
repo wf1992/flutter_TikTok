@@ -78,27 +78,27 @@ class LikeViewControllerState extends State<LikeViewController> {
     double x = dx - width / 2;
     double y = dy + height / 2;
 
-    overlayEntry = new OverlayEntry(builder: (context) {
-      return Stack(
-        children: <Widget>[
-          new Positioned(
-            left: x,
-            top: y,
-            child: new LikeView(
-              overlayEntry: overlayEntry,
-            ),
-          ),
-        ],
-      );
-    });
+    // overlayEntry = new OverlayEntry(builder: (context) {
+    //   return Stack(
+    //     children: <Widget>[
+    //       new Positioned(
+    //         left: x,
+    //         top: y,
+    //         child: new LikeView(
+    //           overlayEntry: overlayEntry,
+    //         ),
+    //       ),
+    //     ],
+    //   );
+    // });
 
-    ///插入全局悬浮控件
-    overlayState.insert(overlayEntry);
+    // ///插入全局悬浮控件
+    // overlayState.insert(overlayEntry);
   }
 }
 
 class LikeView extends StatefulWidget {
-  LikeView({Key key, this.overlayEntry});
+  LikeView({Key? key, required this.overlayEntry});
   OverlayEntry overlayEntry;
   @override
   State<StatefulWidget> createState() {
@@ -110,12 +110,12 @@ class LikeViewState extends State<LikeView> with TickerProviderStateMixin {
   int step = 0;
   double width = 50;
   double height = 50;
-  AnimationController controller;
-  Animation<EdgeInsets> upLocation;
+  late AnimationController controller;
+  late Animation<EdgeInsets> upLocation;
 
-  Animation<double> display;
-  Animation<double> scaleAnimate;
-  Animation<double> scaleAnimate2;
+  late Animation<double> display;
+  late Animation<double> scaleAnimate;
+  late Animation<double> scaleAnimate2;
 
   @override
   void initState() {
@@ -194,43 +194,47 @@ class LikeViewState extends State<LikeView> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    // TODO: implement build
     controller.forward();
-    if (this.step == 0) {
-      return AnimatedBuilder(
-        builder: (BuildContext context, Widget child) {
-          return Transform.scale(
-            child: Padding(
-              padding: upLocation.value,
-              child: Image.asset(
-                'assets/images/love.jpeg',
-                fit: BoxFit.fill,
-                width: width,
-                height: height,
-              ),
-            ),
-            scale: scaleAnimate.value,
-          );
-        },
-        animation: controller,
-      );
-    } else if (this.step == 1) {
-      return AnimatedBuilder(
-        builder: (BuildContext context, Widget child) {
-          return Transform.scale(
-            child: Opacity(
-              opacity: display.value,
-              child: Image.asset(
-                'assets/images/love.jpeg',
-                fit: BoxFit.fill,
-                width: width,
-                height: height,
-              ),
-            ),
-            scale: scaleAnimate2.value,
-          );
-        },
-        animation: controller,
-      );
-    }
+    // if (this.step == 0) {
+    //   return AnimatedBuilder(
+    //     builder: (BuildContext context, Widget child) {
+    //       return Transform.scale(
+    //         child: Padding(
+    //           padding: upLocation.value,
+    //           child: Image.asset(
+    //             'assets/images/love.jpeg',
+    //             fit: BoxFit.fill,
+    //             width: width,
+    //             height: height,
+    //           ),
+    //         ),
+    //         scale: scaleAnimate.value,
+    //       );
+    //     },
+    //     animation: controller,
+    //   );
+    // } else if (this.step == 1) {
+    //   return AnimatedBuilder(
+    //     builder: (BuildContext context, Widget child) {
+    //       return Transform.scale(
+    //         child: Opacity(
+    //           opacity: display.value,
+    //           child: Image.asset(
+    //             'assets/images/love.jpeg',
+    //             fit: BoxFit.fill,
+    //             width: width,
+    //             height: height,
+    //           ),
+    //         ),
+    //         scale: scaleAnimate2.value,
+    //       );
+    //     },
+    //     animation: controller,
+    //   );
+    // }else {
+      return Container();
+    // }
   }
+
 }

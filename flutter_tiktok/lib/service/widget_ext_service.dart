@@ -27,10 +27,10 @@ extension WidgetChantExt_Widget on Widget {
   }
 
   Align intoAlign({
-    Key key,
+    Key? key,
     Alignment alignment = Alignment.center,
-    double widthFactor,
-    double heightFactor,
+    double widthFactor = 0,
+    double heightFactor = 0,
   }) {
     return Align(
       key: key,
@@ -42,9 +42,9 @@ extension WidgetChantExt_Widget on Widget {
   }
 
   ClipRRect intoClipRRect({
-    Key key,
+    Key? key,
     BorderRadius borderRadius = BorderRadius.zero,
-    CustomClipper<RRect> clipper,
+    CustomClipper<RRect>? clipper ,
     Clip clipBehavior = Clip.antiAlias,
   }) {
     return ClipRRect(
@@ -57,9 +57,9 @@ extension WidgetChantExt_Widget on Widget {
   }
 
   ClipOval intoClipOval({
-    Key key,
+    Key? key,
     BorderRadius borderRadius = BorderRadius.zero,
-    CustomClipper<Rect> clipper,
+    CustomClipper<Rect>? clipper,
     Clip clipBehavior = Clip.antiAlias,
   }) {
     return ClipOval(
@@ -71,9 +71,9 @@ extension WidgetChantExt_Widget on Widget {
   }
 
   ClipPath intoClipPath({
-    Key key,
+    Key? key,
     BorderRadius borderRadius = BorderRadius.zero,
-    CustomClipper<Path> clipper,
+    CustomClipper<Path>? clipper,
     Clip clipBehavior = Clip.antiAlias,
   }) {
     return ClipPath(
@@ -85,7 +85,7 @@ extension WidgetChantExt_Widget on Widget {
   }
 
   Offstage intoOffstage({
-    Key key,
+    Key? key,
     bool offstage = true,
   }) {
     return Offstage(
@@ -96,24 +96,24 @@ extension WidgetChantExt_Widget on Widget {
   }
 
   Padding intoPadding({
-    Key key,
-    EdgeInsetsGeometry padding,
+    Key? key,
+    EdgeInsetsGeometry? padding,
   }) {
     return Padding(
       key: key,
-      padding: padding,
+      padding: padding??EdgeInsets.all(0),
       child: this,
     );
   }
 
   Positioned intoPositioned({
-    Key key,
-    double left,
-    double top,
-    double right,
-    double bottom,
-    double width,
-    double height,
+    Key? key,
+    double left = 0,
+    double top = 0,
+    double right = 0,
+    double bottom = 0,
+    double width = 0,
+    double height = 0,
   }) {
     return Positioned(
       key: key,
@@ -128,9 +128,9 @@ extension WidgetChantExt_Widget on Widget {
   }
 
   Center intoCenter({
-    Key key,
-    double widthFactor,
-    double heightFactor,
+    Key? key,
+    double widthFactor = 0,
+    double heightFactor = 0,
   }) {
     return Center(
       key: key,
@@ -141,7 +141,7 @@ extension WidgetChantExt_Widget on Widget {
   }
 
   Expanded intoExpanded({
-    Key key,
+    Key? key,
     int flex = 1,
   }) {
     return Expanded(
@@ -152,7 +152,7 @@ extension WidgetChantExt_Widget on Widget {
   }
 
   Flexible intoFlexible({
-    Key key,
+    Key? key,
     int flex = 1,
     FlexFit fit = FlexFit.loose,
   }) {
@@ -165,9 +165,9 @@ extension WidgetChantExt_Widget on Widget {
   }
 
   SizedBox intoSizedBox({
-    Key key,
-    double width,
-    double height,
+    Key? key,
+    double width = 0,
+    double height = 0,
   }) {
     return SizedBox(
       key: key,
@@ -178,7 +178,7 @@ extension WidgetChantExt_Widget on Widget {
   }
 
   LimitedBox intoLimitedBox({
-    Key key,
+    Key? key,
     double maxWidth = double.infinity,
     double maxHeight = double.infinity,
   }) {
@@ -191,12 +191,12 @@ extension WidgetChantExt_Widget on Widget {
   }
 
   OverflowBox intoOverflowBox({
-    Key key,
+    Key? key,
     Alignment alignment = Alignment.center,
-    double minWidth,
-    double maxWidth,
-    double minHeight,
-    double maxHeight,
+    double minWidth = 0,
+    double maxWidth = 0,
+    double minHeight = 0,
+    double maxHeight = 0,
   }) {
     return OverflowBox(
       key: key,
@@ -210,8 +210,8 @@ extension WidgetChantExt_Widget on Widget {
   }
 
   SizedOverflowBox intoSizedOverflowBox({
-    Key key,
-    @required Size size,
+    Key? key,
+    required Size size,
     Alignment alignment = Alignment.center,
   }) {
     return SizedOverflowBox(
@@ -223,7 +223,7 @@ extension WidgetChantExt_Widget on Widget {
   }
 
   FittedBox intoFittedBox({
-    Key key,
+    Key? key,
     BoxFit fit = BoxFit.contain,
     AlignmentGeometry alignment = Alignment.center,
   }) {
@@ -236,8 +236,8 @@ extension WidgetChantExt_Widget on Widget {
   }
 
   DecoratedBox intoDecoratedBox({
-    Key key,
-    @required Decoration decoration,
+    Key? key,
+    required Decoration decoration,
     DecorationPosition position = DecorationPosition.background,
   }) {
     return DecoratedBox(
@@ -249,8 +249,8 @@ extension WidgetChantExt_Widget on Widget {
   }
 
   RotatedBox intoRotatedBox({
-    Key key,
-    @required int quarterTurns,
+    Key? key,
+    required int quarterTurns,
   }) {
     return RotatedBox(
       key: key,
@@ -260,8 +260,8 @@ extension WidgetChantExt_Widget on Widget {
   }
 
   ConstrainedBox intoConstrainedBox({
-    Key key,
-    @required BoxConstraints constraints,
+    Key? key,
+    required BoxConstraints constraints,
   }) {
     return ConstrainedBox(
       key: key,
@@ -271,10 +271,10 @@ extension WidgetChantExt_Widget on Widget {
   }
 
   UnconstrainedBox intoUnconstrainedBox({
-    Key key,
-    TextDirection textDirection,
+    Key? key,
+    TextDirection textDirection = TextDirection.ltr,
     Alignment alignment = Alignment.center,
-    Axis constrainedAxis,
+    Axis constrainedAxis = Axis.horizontal,
   }) {
     return UnconstrainedBox(
       key: key,
@@ -286,11 +286,11 @@ extension WidgetChantExt_Widget on Widget {
   }
 
   AnimatedAlign intoAnimatedAlign({
-    Key key,
+    Key? key,
     Alignment alignment = Alignment.center,
     Curve curve = Curves.linear,
-    @required Duration duration,
-    VoidCallback onEnd,
+    required Duration duration,
+    VoidCallback? onEnd,
   }) {
     return AnimatedAlign(
       key: key,
@@ -303,11 +303,11 @@ extension WidgetChantExt_Widget on Widget {
   }
 
   AnimatedPadding intoAnimatedPadding({
-    Key key,
-    @required EdgeInsetsGeometry padding,
+    Key? key,
+    required EdgeInsetsGeometry padding,
     Curve curve = Curves.linear,
-    @required Duration duration,
-    VoidCallback onEnd,
+    required Duration duration,
+    VoidCallback? onEnd,
   }) {
     return AnimatedPadding(
       key: key,
@@ -320,20 +320,20 @@ extension WidgetChantExt_Widget on Widget {
   }
 
   AnimatedContainer intoAnimatedContainer({
-    Key key,
-    Alignment alignment,
-    EdgeInsetsGeometry padding,
-    Color color,
-    Decoration decoration,
-    Decoration foregroundDecoration,
-    double width,
-    double height,
-    BoxConstraints constraints,
-    EdgeInsetsGeometry margin,
-    Matrix4 transform,
+    Key? key,
+    Alignment? alignment,
+    EdgeInsetsGeometry? padding,
+    Color? color,
+    Decoration? decoration,
+    Decoration? foregroundDecoration,
+    double? width,
+    double? height,
+    BoxConstraints? constraints,
+    EdgeInsetsGeometry? margin,
+    Matrix4? transform,
     Curve curve = Curves.linear,
-    @required Duration duration,
-    VoidCallback onEnd,
+    required Duration duration,
+    VoidCallback? onEnd,
   }) {
     return AnimatedContainer(
       key: key,
@@ -355,13 +355,13 @@ extension WidgetChantExt_Widget on Widget {
   }
 
   SingleChildScrollView intoSingleChildScrollView({
-    Key key,
+    Key? key,
     Axis scrollDirection = Axis.vertical,
     bool reverse = false,
-    EdgeInsetsGeometry padding,
-    bool primary,
-    ScrollPhysics physics,
-    ScrollController controller,
+    EdgeInsetsGeometry? padding,
+    bool? primary,
+    ScrollPhysics? physics,
+    ScrollController? controller,
     DragStartBehavior dragStartBehavior = DragStartBehavior.start,
   }) {
     return SingleChildScrollView(
@@ -377,45 +377,40 @@ extension WidgetChantExt_Widget on Widget {
     );
   }
 
-  FlatButton intoFlatButton({
-    Key key,
-    @required VoidCallback onPressed,
-    VoidCallback onLongPress,
-    ValueChanged<bool> onHighlightChanged,
-    ButtonTextTheme textTheme,
-    Color textColor,
-    Color disabledTextColor,
-    Color color,
-    Color disabledColor,
-    Color focusColor,
-    Color hoverColor,
-    Color highlightColor,
-    Color splashColor,
-    Brightness colorBrightness,
+  RawMaterialButton intoFlatButton({
+    Key? key,
+    required VoidCallback onPressed,
+    VoidCallback? onLongPress,
+    ValueChanged<bool>? onHighlightChanged,
+    TextStyle? textStyle,
+    Color? disabledTextColor,
+    Color? color,
+    Color? disabledColor,
+    Color? focusColor,
+    Color? hoverColor,
+    Color? highlightColor,
+    Color? splashColor,
+    Brightness? colorBrightness,
     EdgeInsetsGeometry padding = const EdgeInsets.all(0),
-    ShapeBorder shape,
+    ShapeBorder? shape,
     Clip clipBehavior = Clip.none,
-    FocusNode focusNode,
+    FocusNode? focusNode,
     bool autofocus = false,
-    MaterialTapTargetSize materialTapTargetSize,
+    MaterialTapTargetSize? materialTapTargetSize,
   }) {
-    return FlatButton(
+    return RawMaterialButton(
       key: key,
       onPressed: onPressed,
       onLongPress: onLongPress,
       onHighlightChanged: onHighlightChanged,
-      textTheme: textTheme,
-      textColor: textColor,
-      disabledTextColor: disabledTextColor,
-      color: color,
-      disabledColor: disabledColor,
+      textStyle: textStyle,
+      fillColor: color,
       focusColor: focusColor,
       hoverColor: hoverColor,
       highlightColor: highlightColor,
       splashColor: splashColor,
-      colorBrightness: colorBrightness,
       padding: padding,
-      shape: shape,
+      shape: shape??const RoundedRectangleBorder(),
       clipBehavior: clipBehavior,
       focusNode: focusNode,
       autofocus: autofocus,
@@ -424,56 +419,56 @@ extension WidgetChantExt_Widget on Widget {
     );
   }
 
-  GestureDetector onTap(GestureTapCallback onTap, {Key key}) {
+  GestureDetector onTap(GestureTapCallback onTap, {Key? key}) {
     return intoGestureDetector(onTap: onTap, key: key);
   }
 
-  GestureDetector onDoubleTap(GestureTapCallback onDoubleTap, {Key key}) {
+  GestureDetector onDoubleTap(GestureTapCallback onDoubleTap, {Key? key}) {
     return intoGestureDetector(onDoubleTap: onDoubleTap, key: key);
   }
 
-  GestureDetector onLongPress(GestureLongPressCallback onLongPress, {Key key}) {
+  GestureDetector onLongPress(GestureLongPressCallback onLongPress, {Key? key}) {
     return intoGestureDetector(onLongPress: onLongPress, key: key);
   }
 
   GestureDetector intoGestureDetector({
-    Key key,
-    GestureTapDownCallback onTapDown,
-    GestureTapUpCallback onTapUp,
-    GestureTapCallback onTap,
-    GestureTapCancelCallback onTapCancel,
-    GestureTapDownCallback onSecondaryTapDown,
-    GestureTapUpCallback onSecondaryTapUp,
-    GestureTapCancelCallback onSecondaryTapCancel,
-    GestureTapCallback onDoubleTap,
-    GestureLongPressCallback onLongPress,
-    GestureLongPressStartCallback onLongPressStart,
-    GestureLongPressMoveUpdateCallback onLongPressMoveUpdate,
-    GestureLongPressUpCallback onLongPressUp,
-    GestureLongPressEndCallback onLongPressEnd,
-    GestureDragDownCallback onVerticalDragDown,
-    GestureDragStartCallback onVerticalDragStart,
-    GestureDragUpdateCallback onVerticalDragUpdate,
-    GestureDragEndCallback onVerticalDragEnd,
-    GestureDragCancelCallback onVerticalDragCancel,
-    GestureDragDownCallback onHorizontalDragDown,
-    GestureDragStartCallback onHorizontalDragStart,
-    GestureDragUpdateCallback onHorizontalDragUpdate,
-    GestureDragEndCallback onHorizontalDragEnd,
-    GestureDragCancelCallback onHorizontalDragCancel,
-    GestureForcePressStartCallback onForcePressStart,
-    GestureForcePressPeakCallback onForcePressPeak,
-    GestureForcePressUpdateCallback onForcePressUpdate,
-    GestureForcePressEndCallback onForcePressEnd,
-    GestureDragDownCallback onPanDown,
-    GestureDragStartCallback onPanStart,
-    GestureDragUpdateCallback onPanUpdate,
-    GestureDragEndCallback onPanEnd,
-    GestureDragCancelCallback onPanCancel,
-    GestureScaleStartCallback onScaleStart,
-    GestureScaleUpdateCallback onScaleUpdate,
-    GestureScaleEndCallback onScaleEnd,
-    HitTestBehavior behavior,
+    Key? key,
+    GestureTapDownCallback? onTapDown,
+    GestureTapUpCallback? onTapUp,
+    GestureTapCallback? onTap,
+    GestureTapCancelCallback? onTapCancel,
+    GestureTapDownCallback? onSecondaryTapDown,
+    GestureTapUpCallback? onSecondaryTapUp,
+    GestureTapCancelCallback? onSecondaryTapCancel,
+    GestureTapCallback? onDoubleTap,
+    GestureLongPressCallback? onLongPress,
+    GestureLongPressStartCallback? onLongPressStart,
+    GestureLongPressMoveUpdateCallback? onLongPressMoveUpdate,
+    GestureLongPressUpCallback? onLongPressUp,
+    GestureLongPressEndCallback? onLongPressEnd,
+    GestureDragDownCallback? onVerticalDragDown,
+    GestureDragStartCallback? onVerticalDragStart,
+    GestureDragUpdateCallback? onVerticalDragUpdate,
+    GestureDragEndCallback? onVerticalDragEnd,
+    GestureDragCancelCallback? onVerticalDragCancel,
+    GestureDragDownCallback? onHorizontalDragDown,
+    GestureDragStartCallback? onHorizontalDragStart,
+    GestureDragUpdateCallback? onHorizontalDragUpdate,
+    GestureDragEndCallback? onHorizontalDragEnd,
+    GestureDragCancelCallback? onHorizontalDragCancel,
+    GestureForcePressStartCallback? onForcePressStart,
+    GestureForcePressPeakCallback? onForcePressPeak,
+    GestureForcePressUpdateCallback? onForcePressUpdate,
+    GestureForcePressEndCallback? onForcePressEnd,
+    GestureDragDownCallback? onPanDown,
+    GestureDragStartCallback? onPanStart,
+    GestureDragUpdateCallback? onPanUpdate,
+    GestureDragEndCallback? onPanEnd,
+    GestureDragCancelCallback? onPanCancel,
+    GestureScaleStartCallback? onScaleStart,
+    GestureScaleUpdateCallback? onScaleUpdate,
+    GestureScaleEndCallback? onScaleEnd,
+    HitTestBehavior? behavior,
     bool excludeFromSemantics = false,
     DragStartBehavior dragStartBehavior = DragStartBehavior.start,
   }) {
@@ -522,17 +517,17 @@ extension WidgetChantExt_Widget on Widget {
   }
 
   Container intoContainer({
-    Key key,
-    AlignmentGeometry alignment,
-    EdgeInsetsGeometry padding,
-    Color color,
-    Decoration decoration,
-    Decoration foregroundDecoration,
-    double width,
-    double height,
-    BoxConstraints constraints,
-    EdgeInsetsGeometry margin,
-    Matrix4 transform,
+    Key? key,
+    AlignmentGeometry? alignment,
+    EdgeInsetsGeometry? padding,
+    Color? color,
+    Decoration? decoration,
+    Decoration? foregroundDecoration,
+    double? width,
+    double? height,
+    BoxConstraints? constraints,
+    EdgeInsetsGeometry? margin,
+    Matrix4? transform,
   }) {
     return Container(
       key: key,

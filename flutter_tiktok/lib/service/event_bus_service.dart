@@ -1,3 +1,5 @@
+import 'package:event_bus/event_bus.dart';
+
 typedef void EventCallback(arg);
 
 class EventBusService {
@@ -9,16 +11,16 @@ class EventBusService {
   //添加订阅者
   void on(eventName, EventCallback f) {
     if (eventName == null || f == null) return;
-    _emap[eventName] ??= List<EventCallback>();
-    _emap[eventName].add(f);
+    _emap[eventName] ??= <EventCallback>[];
+    _emap[eventName]?.add(f);
   }
 
   //移除订阅者
-  void off(eventName, [EventCallback f]) {
+  void off(eventName, [EventCallback? f]) {
     var list = _emap[eventName];
     if (eventName == null || list == null) return;
     if (f == null) {
-      _emap[eventName] = null;
+      _emap[eventName] = [];
     } else {
       list.remove(f);
     }
@@ -36,8 +38,17 @@ class EventBusService {
 
   // static const keyStopVideo = "keyStopVideo";
 }
+class KeyPlayVideoEvent {
+  int positionTag;
+  KeyPlayVideoEvent(this.positionTag);
+}
 
-var eventBus = EventBusService();
+class KeyStopVideoEvent {
+  String positionTag;
+  KeyStopVideoEvent(this.positionTag);
+}
+
+var eventBus = EventBus();
 
 const String keyStopVideo = "keyStopVideo";
 const String keyPlayVideo = "keyPlayVideo";

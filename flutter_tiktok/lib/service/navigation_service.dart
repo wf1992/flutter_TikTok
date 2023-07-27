@@ -3,17 +3,23 @@ import 'package:flutter/cupertino.dart';
 NavigationService navigationService = NavigationService();
 
 class NavigationService {
-  NavigationService() {
+  factory NavigationService() => _getInstance();
+
+  static NavigationService _getInstance() => _instance;
+  static NavigationService _instance = NavigationService._internal();
+  late GlobalKey<NavigatorState> navigatorKey;
+
+  NavigationService._internal() {
     navigatorKey = GlobalKey<NavigatorState>();
   }
-  GlobalKey<NavigatorState> navigatorKey;
 
-  Future<T> navigateTo<T>(Route<T> route) {
-    return navigatorKey.currentState.push<T>(route);
+
+  Future<T?> navigateTo<T>(Route<T> route) {
+    return navigatorKey.currentState!.push<T>(route);
   }
 
-  bool goBack() {
-    return navigatorKey.currentState.pop();
+  void goBack() {
+    return navigatorKey.currentState?.pop();
   }
 
   Future cNavigateTo(Widget controller) {

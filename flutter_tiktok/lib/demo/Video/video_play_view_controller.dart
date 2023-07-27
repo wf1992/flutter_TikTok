@@ -12,7 +12,7 @@ class VideoController extends StatefulWidget {
   final int positionTag;
   String video;
 
-  VideoController({Key key, this.image, this.positionTag, this.video})
+  VideoController({Key? key,required this.image,required this.positionTag,required this.video})
       : super(key: key);
 
   @override
@@ -23,10 +23,10 @@ class VideoController extends StatefulWidget {
 
 class ViewControllerState extends State<VideoController> {
   ScrollController scroController = new ScrollController();
-  Timer timer;
+  Timer? timer;
   bool videoPrepared = false; //视频是否初始化
   bool _hideActionButton = true;
-  VideoPlayerController _controller;
+  late VideoPlayerController _controller;
 
   static double h = Platform.isAndroid
       ? (16 / 9 * ScreenService.width - ScreenService.topSafeHeight <=
@@ -80,8 +80,10 @@ class ViewControllerState extends State<VideoController> {
         setState(() {});
       });
 
-    eventBus.on(keyPlayVideo + widget.positionTag.toString(), (arg) {
-      if (arg == widget.positionTag) {
+    eventBus.on<KeyPlayVideoEvent>().listen((event) {
+      int positionTag = event.positionTag;
+      print('tag~~~~${positionTag}~~~~${widget.positionTag}~~~~~${_controller}');
+      if (positionTag == widget.positionTag) {
         _controller.play();
         videoPrepared = true;
         _hideActionButton = true;
@@ -91,12 +93,25 @@ class ViewControllerState extends State<VideoController> {
       }
       setState(() {});
     });
+    // eventBus.on(keyPlayVideo, (arg) {
+      // print('tag~~~~~${widget.positionTag}~~~~~${_controller}');
+      //
+      // if (arg == widget.positionTag) {
+      //   _controller.play();
+      //   videoPrepared = true;
+      //   _hideActionButton = true;
+      // } else {
+      //   _controller.pause();
+      //   _hideActionButton = false;
+      // }
+      // setState(() {});
+    // });
   }
 
   @override
   void dispose() {
     this.scroController.dispose();
-    this.timer.cancel();
+    this.timer?.cancel();
     _controller.dispose(); //释放播放器资源
 
     super.dispose();

@@ -20,12 +20,12 @@ class VideoViewControllerState extends State<VideoViewController> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    _controller.addListener(() {
-      if (_controller.page.floor() == _controller.page) {
-        eventBus.emit(keyPlayVideo + _controller.page.floor().toString(),
-            _controller.page.floor());
-      }
-    });
+    // _controller.addListener(() {
+    //   print('_controller~~~~~${_controller.index.floor()}~~~~~${_controller.index}');
+    //   if (_controller.index.floor() == _controller.index) {
+    //     eventBus.fire(KeyPlayVideoEvent(_controller.index.floor()));
+    //   }
+    // });
   }
 
   @override
@@ -49,6 +49,12 @@ class VideoViewControllerState extends State<VideoViewController> {
           direction: Axis.vertical,
           children: children,
           controller: _controller,
+          onChanged: (index) {
+            print('_controller~~~~~${_controller.index.floor()}~~~${index}~~~${_controller.index}');
+            if (_controller.index.floor() == _controller.index) {
+              eventBus.fire(KeyPlayVideoEvent(_controller.index.floor()));
+            }
+          },
         ),
         color: Colors.black,
       ),

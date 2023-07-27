@@ -6,7 +6,7 @@ import 'package:flutter_tiktok/service/screen_service.dart';
 
 class VideoController extends StatefulWidget {
   String image;
-  VideoController({Key key, this.image}) : super(key: key);
+  VideoController({Key? key,required this.image}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
@@ -16,7 +16,7 @@ class VideoController extends StatefulWidget {
 
 class ViewControllerState extends State<VideoController> {
   ScrollController scroController = new ScrollController();
-  Timer timer;
+  Timer? timer;
   void startTimer() {
     int time = 3000;
     timer = Timer.periodic(new Duration(milliseconds: time), (timer) {
@@ -54,7 +54,7 @@ class ViewControllerState extends State<VideoController> {
   @override
   void dispose() {
     this.scroController.dispose();
-    this.timer.cancel();
+    this.timer?.cancel();
     super.dispose();
   }
 
